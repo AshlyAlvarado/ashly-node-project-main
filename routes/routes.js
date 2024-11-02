@@ -5,13 +5,11 @@ const apiPrefix = '/api';
 
 // // Importing Routes
 // const authentication = require('../features/authentication/authRoutes');
-// const posts = require('../features/posts/postRoutes');
-// const comments = require('../features/comments/commentRoutes');
+const material = require('../features/materials/materialRoutes');
 
-// // Implementing Routes
-// router.use(`${apiPrefix}/auth`, authentication);
-// router.use(`${apiPrefix}/posts`, posts);
-// router.use(`${apiPrefix}/comments`, comments);
+// Implementing Routes
+//router.use(`${apiPrefix}/auth`, authentication);
+router.use(`${apiPrefix}/material`, material);
 
 
 module.exports = router;

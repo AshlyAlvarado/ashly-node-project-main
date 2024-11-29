@@ -3,7 +3,7 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const routes = require('./routes/routes');
-const weatherRoutes  = require('./features/materials/weatherController');
+const weatherRoutes  = require('./features/weather/weatherController');
 
 app.use( cors() );
 app.use( express.static('public') );

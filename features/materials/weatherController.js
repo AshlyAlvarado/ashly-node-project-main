@@ -3,7 +3,7 @@ const axios = require('axios');
 const router = express.Router();
 
 // Define la URL de la API externa
-const WEATHER_API_URL = "https://api.tomorrow.io/v4/weather/forecast?location=15.843449%2C%20-87.955261&timesteps=hourly&apikey=ZZSSCmVGBpuXIOs5pzUthMhLthsCkxBB";
+const WEATHER_API_URL = `https://api.tomorrow.io/v4/weather/forecast?location=15.843449%2C%20-87.955261&timesteps=hourly&apikey=${process.env.CLIMA_API_KEY}`;
 
 // Endpoint para obtener los datos del clima
 router.get('/weather', async (req, res) => {

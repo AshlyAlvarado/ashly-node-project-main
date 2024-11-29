@@ -4,7 +4,7 @@ const db = new Pool({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: 'root',
+    password: `${process.env.DB_PASSWORD}`,
     database: 'avanza',
 });
 

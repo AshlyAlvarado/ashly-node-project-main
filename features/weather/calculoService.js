@@ -35,15 +35,19 @@ const calcularResultados = (programacionData, weatherData) => {
       if (toneladasHora === 0 && clima > 0) {
         horasParoPorLluvia++;
       }
+      
+      const nuevaFechaHora = new Date(fechaHora.getTime());
 
       resultados.push({
-        fecha: fechaHora,
+        fecha: nuevaFechaHora,
         toneladasRestantes,
         toneladasHora,
         clima,
       });
-
+      
+      // Ahora incrementamos la hora en el objeto original
       fechaHora.setHours(fechaHora.getHours() + 1);
+      
     }
   }
 

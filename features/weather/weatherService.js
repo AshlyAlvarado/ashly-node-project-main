@@ -1,4 +1,4 @@
-const calcularResultados = (programacionData, weatherData) => {
+const calcularProyecciones = (programacionData, weatherData) => {
   const metasPorMaterial = {
     Carbon: 500,
     Petcoke: 500,
@@ -102,4 +102,4 @@ const calcularFactorAjuste = (tipoOperacion, material, clima, toneladasTotales, 
   return factor;
 };
 
-module.exports = calcularResultados;
+module.exports = calcularProyecciones;

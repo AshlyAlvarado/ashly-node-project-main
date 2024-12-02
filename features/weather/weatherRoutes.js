@@ -1,7 +1,8 @@
-const express = require('express');
+const { Router } = require('express');
 const axios = require('axios');
-const calcularResultados = require('./calculoService');
-const router = express.Router();
+const calcularResultados = require('./weatherService');
+
+const weatherRouter = Router();
 
 // Define la URL de la API externa
 const WEATHER_API_URL = `https://api.tomorrow.io/v4/weather/forecast?location=15.843449%2C%20-87.955261&timesteps=hourly&apikey=${process.env.CLIMA_API_KEY}`;
@@ -25,7 +26,16 @@ const obtenerDatosClima = async () => {
 };
 
 // Endpoint para obtener los datos del clima
-router.get('/weather', async (req, res) => {
+/**
+ * @swagger
+ * /weather:
+ *   get:
+ *     summary: Obtiene datos del clima
+ *     responses:
+ *       200:
+ *         description: Datos del clima
+ */
+weatherRouter.get('/weather', async (req, res) => {
   try {
     const processedData = await obtenerDatosClima();
     res.status(200).json({
@@ -41,7 +51,32 @@ router.get('/weather', async (req, res) => {
 });
 
 // Endpoint para obtener los datos del clima
-router.post('/proyeccion', async (req, res) => {
+/**
+ * @swagger
+ * /weather/proyeccion:
+ *   post:
+ *     summary: Genera una proyección basada en datos del clima
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               tipoOperacion:
+ *                 type: string
+ *               material:
+ *                 type: string
+ *               toneladasTotales:
+ *                 type: number
+ *               fechaArribo:
+ *                 type: string
+ *               horaArribo:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Proyección generada
+ */
+weatherRouter.post('/proyeccion', async (req, res) => {
   try {
     // Datos enviados por el frontend
     const { tipoOperacion, material, toneladasTotales, fechaArribo, horaArribo } = req.body;
@@ -72,4 +107,4 @@ router.post('/proyeccion', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = weatherRouter;
